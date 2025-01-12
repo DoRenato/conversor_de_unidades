@@ -14,9 +14,6 @@ valor_temp_texto="""
 Informe o valor da temperatura (Apenas o numero inteiro ou decimal): """
 
 
-def validar_tipo_temp(tipo: int) -> bool:
-    return 1 <= tipo <= 3 # Valida se o tipo de temperatura está entre 1 e 3.
-
 def converter_temperatura(temp_atual, temp_saida, valor):
     #1 Celsius
     #2 Fahrenheit
