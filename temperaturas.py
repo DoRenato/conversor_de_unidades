@@ -1,19 +1,3 @@
-tipo_temp_atual_texto="""
-Qual o tipo de temperatura de origem?
-    1) Celsius
-    2) Fahrenheit
-    3) Kelvin
-Digite apenas o número correspondente: """
-tipo_temp_saida_texto="""
-Agora qual o tipo de temperatura que você busca?
-    1) Celsius
-    2) Fahrenheit
-    3) Kelvin
-Digite apenas o número correspondente: """
-valor_temp_texto="""
-Informe o valor da temperatura (Apenas o numero inteiro ou decimal): """
-
-
 def converter_temperatura(temp_atual, temp_saida, valor):
     #1 Celsius
     #2 Fahrenheit
@@ -41,3 +25,26 @@ def converter_temperatura(temp_atual, temp_saida, valor):
         else:
             fahrenheit=kelvin_para_celsius*(9/5)+32
             return fahrenheit
+        
+
+temp_entrada_texto="""
+Qual o tipo de temperatura de origem?
+    1) Celsius
+    2) Fahrenheit
+    3) Kelvin
+Digite apenas o número correspondente: """
+tipo_temp_saida_texto="""
+Agora qual o tipo de temperatura que você busca?
+    1) Celsius
+    2) Fahrenheit
+    3) Kelvin
+Digite apenas o número correspondente: """
+valor_temp_texto="""
+Informe o valor da temperatura (Apenas o numero inteiro ou decimal): """
+
+
+tipos_temperaturas={
+    1:"Celsius",
+    2:"Fahrenheit",
+    3:"Kelvin"
+}
