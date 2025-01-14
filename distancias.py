@@ -27,12 +27,14 @@ Qual a unidade de saida?
     6) Polegadas
 Digite apenas o número correspondente: """
 
+unidade_valor_texto='Digite o valor a ser convertido: '
+
 def converter_em_metros(entrada, valor):
     if entrada==1:
         mm2m=valor/1000
         return mm2m
     elif entrada==2:
-        cm2m=valor/10
+        cm2m=valor/100
         return cm2m
     elif entrada==4:
         km2m=valor*1000

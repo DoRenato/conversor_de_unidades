@@ -5,8 +5,42 @@ from temperaturas import (
 
 from distancias import(
     unidades_de_medida, unidade_entrada_texto, unidade_saida_texto,
-    converter_unidade
+    converter_unidade, unidade_valor_texto
 )
+
+
+def menu_conversao(tipo_conversao, menu_dict, entrada_texto, saida_texto, valor_texto):
+    valor_invalido_texto="\n##### Valor informado invalido. #####"  
+    while True:
+        try:
+            entrada=int(input(f'{entrada_texto}'))
+            if menu_dict.get(entrada):
+                break
+        except ValueError:
+            print(valor_invalido_texto)
+            continue
+        print(valor_invalido_texto)
+    while True:
+        try:
+            saida=int(input(f'{saida_texto}'))
+            if menu_dict.get(saida):
+                break
+        except ValueError:
+            print(valor_invalido_texto)
+            continue
+        print(valor_invalido_texto)
+    while True:
+        try:
+            valor=float(input(f'{valor_texto}'))
+            break
+        except ValueError:
+            print("\n##### Entrada inválida! Por favor, insira um número inteiro ou decimal. #####")
+    if tipo_conversao==1:
+        novo_valor=round(converter_temperatura(entrada, saida, valor),3)
+        print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+    if tipo_conversao==2:
+        novo_valor=round(converter_unidade(entrada, saida, valor),3)
+        print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
 
 
 bem_vindo_texto="""
@@ -17,70 +51,17 @@ Olá, seja bem-vindo ao Conversor de Unidades. Qual tipo de conversão você des
     4) Conversão de Tempo
     5) Conversão de Velocidade
     0) Fechar Programa
-Escolha uma opção digitando o número correspondente: """
-
-valor_invalido_texto="\n##### Valor informado invalido. #####"            
-
+Escolha uma opção digitando o número correspondente: """  
 
 while True:
-    unidade=int(input(f'{bem_vindo_texto}'))
-    if unidade==1:
-        while True:
-            try:
-                temp_entrada=int(input(f'{temp_entrada_texto}'))
-                if tipos_temperaturas.get(temp_entrada):
-                    break
-            except ValueError:
-                print(valor_invalido_texto)
-                continue
-            print(valor_invalido_texto)
-        while True:
-            try:
-                tipo_temp_saida=int(input(f'{tipo_temp_saida_texto}'))
-                if tipos_temperaturas.get(tipo_temp_saida):
-                    break
-            except ValueError:
-                print(valor_invalido_texto)
-                continue
-            print(valor_invalido_texto)
-        while True:
-            try:
-                valor_temp=float(input(f'{valor_temp_texto}'))
-                break
-            except ValueError:
-                print("\n##### Entrada inválida! Por favor, insira um número inteiro ou decimal. #####")
-        nova_temperatura=round(converter_temperatura(temp_entrada, tipo_temp_saida, valor_temp),3)
-        print(f"\n{valor_temp} {tipos_temperaturas[temp_entrada]} = {nova_temperatura} {tipos_temperaturas[tipo_temp_saida]} ")
+    tipo_conversao=int(input(f'{bem_vindo_texto}'))
+    if tipo_conversao==1:
+        nova_temperatura=menu_conversao(tipo_conversao, tipos_temperaturas, temp_entrada_texto, tipo_temp_saida_texto, valor_temp_texto)
     
-    elif unidade==2:
-        while True:
-            try:
-                unidade_entrada=int(input(f'{unidade_entrada_texto}'))
-                if unidades_de_medida.get(unidade_entrada):
-                    break
-            except ValueError:
-                print(valor_invalido_texto)
-                continue
-            print(valor_invalido_texto)
-        while True:
-            try:
-                unidade_saida=int(input(f'{unidade_saida_texto}'))
-                if unidades_de_medida.get(unidade_saida):
-                    break
-            except ValueError:
-                print(valor_invalido_texto)
-                continue
-            print(valor_invalido_texto)
-        while True:
-            try:
-                valor_unidade=float(input('Digite o valor a ser convertido: '))
-                break
-            except ValueError:
-                print("\n##### Entrada inválida! Por favor, insira um número inteiro ou decimal. #####")
-        nova_distancia=round(converter_unidade(unidade_entrada, unidade_saida, valor_unidade),3)
-        print(f"\n{valor_unidade} {unidades_de_medida[unidade_entrada]} = {nova_distancia} {unidades_de_medida[unidade_saida]} ")
+    elif tipo_conversao==2:
+        nova_distancia=menu_conversao(tipo_conversao, unidades_de_medida, unidade_entrada_texto, unidade_saida_texto, unidade_valor_texto)
         
-    elif unidade==0:
+    elif tipo_conversao==0:
         break
     else:
         print("Valor Inválido, tente novamente.")
