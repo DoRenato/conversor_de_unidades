@@ -2,28 +2,35 @@ from temperaturas import (
     converter_temperatura, temp_entrada_texto, tipo_temp_saida_texto,
     valor_temp_texto, tipos_temperaturas
 )
-
 from distancias import(
     unidades_de_medida, unidade_entrada_texto, unidade_saida_texto,
     converter_unidade, unidade_valor_texto
 )
-
 from pesos import(
     unidades_pesos, peso_entrada_texto, peso_saida_texto,
     converter_peso, peso_valor_texto
 )
-
-# from tempo import(
-#     unidades_tempo, tempo_entrada_texto, tempo_saida_texto,
-#     converter_tempo, tempo_valor_texto
-# )
-
+from tempo import(
+    unidades_tempo, tempo_entrada_texto, tempo_saida_texto,
+    converter_tempo, tempo_valor_texto
+)
 # from velocidade import(
-#     unidades_velocidade, unidade_entrada_texto, unidade_saida_texto,
-#     converter_velocidade, unidade_valor_texto
+#     unidades_velocidade, velocidade_entrada_texto, velocidade_saida_texto,
+#     converter_velocidade, velocidade_valor_texto
 # )
 
 
+
+def mostrar_resultado(tipo_conversao, menu_dict, un_entrada, un_saida, valor_incial, resultado):
+    if tipo_conversao!=4:
+        print(f"\n{valor_incial} {menu_dict[un_entrada]} = {resultado} {menu_dict[un_saida]}")
+    else:
+        if un_saida==2: # Minutos
+            print(f"\n{valor_incial} {menu_dict[un_entrada]} = {resultado[0]}min {resultado[1]}seg ")
+        if un_saida==3: # Horas
+            print(f"\n{valor_incial} {menu_dict[un_entrada]} = {resultado[0]}h {resultado[1]}min {resultado[2]}seg")
+    
+    
 def menu_conversao(tipo_conversao, menu_dict, entrada_texto, saida_texto, valor_texto):
     valor_invalido_texto="\n##### Valor informado invalido. #####"  
     while True:
@@ -46,25 +53,31 @@ def menu_conversao(tipo_conversao, menu_dict, entrada_texto, saida_texto, valor_
         print(valor_invalido_texto)
     while True:
         try:
-            valor=float(input(f'{valor_texto}'))
+            if tipo_conversao==4:
+                valor=int(input(f'{valor_texto}'))
+            else:
+                valor=float(input(f'{valor_texto}'))
             break
         except ValueError:
-            print("\n##### Entrada inválida! Por favor, insira um número inteiro ou decimal. #####")
+            if tipo_conversao==4:
+                print("\n##### Entrada inválida! Por favor, insira um número inteiro apenas. #####")
+            else:
+                print("\n##### Entrada inválida! Por favor, insira um número inteiro ou decimal. #####")
     if tipo_conversao==1:
         novo_valor=round(converter_temperatura(entrada, saida, valor),3)
-        print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+        mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
     if tipo_conversao==2:
         novo_valor=round(converter_unidade(entrada, saida, valor),3)
-        print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+        mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
     if tipo_conversao==3:
         novo_valor=round(converter_peso(entrada, saida, valor),3)
-        print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
-    # if tipo_conversao==4:
-    #     novo_valor=round(converter_tempo(entrada, saida, valor),3)
-    #     print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+        mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
+    if tipo_conversao==4:
+        novo_valor=converter_tempo(entrada, saida, valor)
+        mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
     # if tipo_conversao==5:
     #     novo_valor=round(converter_velocidade(entrada, saida, valor),3)
-    #     print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+    #     mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
 
 
 bem_vindo_texto="""
@@ -84,7 +97,9 @@ while True:
     elif tipo_conversao==2:
         nova_distancia=menu_conversao(tipo_conversao, unidades_de_medida, unidade_entrada_texto, unidade_saida_texto, unidade_valor_texto)
     elif tipo_conversao==3:
-        novo_peso=menu_conversao(tipo_conversao, unidades_pesos, peso_entrada_texto, peso_saida_texto, peso_valor_texto)      
+        novo_peso=menu_conversao(tipo_conversao, unidades_pesos, peso_entrada_texto, peso_saida_texto, peso_valor_texto)
+    elif tipo_conversao==4:
+        novo_peso=menu_conversao(tipo_conversao, unidades_tempo, tempo_entrada_texto, tempo_saida_texto, tempo_valor_texto)         
     elif tipo_conversao==0:
         break
     else:

@@ -8,7 +8,7 @@ def converter_temperatura(temp_atual, temp_saida, valor):
         return valor
     elif temp_atual==1:
         if temp_saida==2:
-            fahrenheit=valor*(5/9)+32
+            fahrenheit=valor*(9/5)+32
             return fahrenheit
         else:
             kelvin=valor+273.15
