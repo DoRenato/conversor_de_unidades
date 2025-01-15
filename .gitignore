@@ -5,3 +5,5 @@
 .vscode
 .env
 venv
+tempo.py
+velocidade.py

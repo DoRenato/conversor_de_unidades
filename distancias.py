@@ -1,34 +1,3 @@
-unidades_de_medida={
-    1: "Milímetros",
-    2: "Centímetros",
-    3: "Metros",
-    4: "Quilômetros",
-    5: "Milhas",
-    6: "Polegadas"
-}
-
-unidade_entrada_texto="""
-Qual a unidade de entrada?
-    1) Milímetros
-    2) Centímetros
-    3) Metros
-    4) Quilômetros
-    5) Milhas
-    6) Polegadas
-Digite apenas o número correspondente: """
-
-unidade_saida_texto="""
-Qual a unidade de saida?
-    1) Milímetros
-    2) Centímetros
-    3) Metros
-    4) Quilômetros
-    5) Milhas
-    6) Polegadas
-Digite apenas o número correspondente: """
-
-unidade_valor_texto='Digite o valor a ser convertido: '
-
 def converter_em_metros(entrada, valor):
     if entrada==1:
         mm2m=valor/1000
@@ -71,4 +40,35 @@ def converter_unidade(entrada, saida, valor_inicial):
     elif saida==6:
         m2in=valor*39.37
         return m2in
-        
+
+
+unidades_de_medida={
+    1: "Milímetros",
+    2: "Centímetros",
+    3: "Metros",
+    4: "Quilômetros",
+    5: "Milhas",
+    6: "Polegadas"
+}
+
+unidade_entrada_texto="""
+Qual a unidade de entrada?
+    1) Milímetros
+    2) Centímetros
+    3) Metros
+    4) Quilômetros
+    5) Milhas
+    6) Polegadas
+Digite apenas o número correspondente: """
+
+unidade_saida_texto="""
+Qual a unidade de saida?
+    1) Milímetros
+    2) Centímetros
+    3) Metros
+    4) Quilômetros
+    5) Milhas
+    6) Polegadas
+Digite apenas o número correspondente: """
+
+unidade_valor_texto='Digite o valor a ser convertido: '

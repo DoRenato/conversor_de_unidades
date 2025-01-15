@@ -8,6 +8,21 @@ from distancias import(
     converter_unidade, unidade_valor_texto
 )
 
+from pesos import(
+    unidades_pesos, peso_entrada_texto, peso_saida_texto,
+    converter_peso, peso_valor_texto
+)
+
+# from tempo import(
+#     unidades_tempo, tempo_entrada_texto, tempo_saida_texto,
+#     converter_tempo, tempo_valor_texto
+# )
+
+# from velocidade import(
+#     unidades_velocidade, unidade_entrada_texto, unidade_saida_texto,
+#     converter_velocidade, unidade_valor_texto
+# )
+
 
 def menu_conversao(tipo_conversao, menu_dict, entrada_texto, saida_texto, valor_texto):
     valor_invalido_texto="\n##### Valor informado invalido. #####"  
@@ -41,6 +56,15 @@ def menu_conversao(tipo_conversao, menu_dict, entrada_texto, saida_texto, valor_
     if tipo_conversao==2:
         novo_valor=round(converter_unidade(entrada, saida, valor),3)
         print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+    if tipo_conversao==3:
+        novo_valor=round(converter_peso(entrada, saida, valor),3)
+        print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+    # if tipo_conversao==4:
+    #     novo_valor=round(converter_tempo(entrada, saida, valor),3)
+    #     print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
+    # if tipo_conversao==5:
+    #     novo_valor=round(converter_velocidade(entrada, saida, valor),3)
+    #     print(f"\n{valor} {menu_dict[entrada]} = {novo_valor} {menu_dict[saida]} ")
 
 
 bem_vindo_texto="""
@@ -57,10 +81,10 @@ while True:
     tipo_conversao=int(input(f'{bem_vindo_texto}'))
     if tipo_conversao==1:
         nova_temperatura=menu_conversao(tipo_conversao, tipos_temperaturas, temp_entrada_texto, tipo_temp_saida_texto, valor_temp_texto)
-    
     elif tipo_conversao==2:
         nova_distancia=menu_conversao(tipo_conversao, unidades_de_medida, unidade_entrada_texto, unidade_saida_texto, unidade_valor_texto)
-        
+    elif tipo_conversao==3:
+        novo_peso=menu_conversao(tipo_conversao, unidades_pesos, peso_entrada_texto, peso_saida_texto, peso_valor_texto)      
     elif tipo_conversao==0:
         break
     else:
