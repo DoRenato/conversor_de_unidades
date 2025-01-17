@@ -32,12 +32,4 @@ unidades_velocidade={
     2: "Quilômetros por hora (Km/h)",
     3: "Milhas por hora (Mph)"
 }
-
-if __name__ == '__main__':
-    entrada=opcoes_selecao(unidades_velocidade, 5, 'entrada')
-    saida=opcoes_selecao(unidades_velocidade, 5, 'saida')
-    valor=opcoes_selecao(unidades_velocidade, 5, 'valor_digitado')
-    print(entrada)
-    print(saida)
-    print(valor)
     
