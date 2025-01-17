@@ -33,19 +33,3 @@ unidades_tempo={
     2: "Minutos",
     3: "Horas"
 }
-
-tempo_entrada_texto="""
-Qual o tempo de entrada?
-    1) Segundos
-    2) Minutos
-    3) Horas
-Digite apenas o número correspondente: """
-
-tempo_saida_texto="""
-Qual o tempo de saida?
-    1) Segundos
-    2) Minutos
-    3) Horas
-Digite apenas o número correspondente: """
-
-tempo_valor_texto='Digite o valor a ser convertido: '

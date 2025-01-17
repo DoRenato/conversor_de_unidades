@@ -29,19 +29,3 @@ unidades_pesos={
     2: "Quilos",
     3: "Toneladas"
 }
-
-peso_entrada_texto="""
-Qual o peso de entrada?
-    1) Gramas
-    2) Quilos
-    3) Toneladas
-Digite apenas o número correspondente: """
-
-peso_saida_texto="""
-Qual o peso de saida?
-    1) Gramas
-    2) Quilos
-    3) Toneladas
-Digite apenas o número correspondente: """
-
-peso_valor_texto='Digite o valor a ser convertido: '

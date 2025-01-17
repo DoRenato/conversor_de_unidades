@@ -1,23 +1,9 @@
-from temperaturas import (
-    converter_temperatura, temp_entrada_texto, tipo_temp_saida_texto,
-    valor_temp_texto, tipos_temperaturas
-)
-from distancias import(
-    unidades_de_medida, unidade_entrada_texto, unidade_saida_texto,
-    converter_unidade, unidade_valor_texto
-)
-from pesos import(
-    unidades_pesos, peso_entrada_texto, peso_saida_texto,
-    converter_peso, peso_valor_texto
-)
-from tempo import(
-    unidades_tempo, tempo_entrada_texto, tempo_saida_texto,
-    converter_tempo, tempo_valor_texto
-)
-# from velocidade import(
-#     unidades_velocidade, velocidade_entrada_texto, velocidade_saida_texto,
-#     converter_velocidade, velocidade_valor_texto
-# )
+from funcoes import opcoes_selecao
+from temperaturas import converter_temperatura, tipos_temperaturas
+from distancias import converter_unidade, unidades_de_medida
+from pesos import converter_peso, unidades_pesos
+from tempo import converter_tempo, unidades_tempo
+# from velocidade import converter_velocidade, unidades_velocidade
 
 
 
@@ -92,14 +78,27 @@ Escolha uma opção digitando o número correspondente: """
 
 while True:
     tipo_conversao=int(input(f'{bem_vindo_texto}'))
+    texto_valor=opcoes_selecao('texto_valor')
     if tipo_conversao==1:
-        nova_temperatura=menu_conversao(tipo_conversao, tipos_temperaturas, temp_entrada_texto, tipo_temp_saida_texto, valor_temp_texto)
+        texto_entrada=opcoes_selecao('entrada',tipos_temperaturas,tipo_conversao)
+        texto_saida=opcoes_selecao('saida', tipos_temperaturas,tipo_conversao)
+        nova_temperatura=menu_conversao(tipo_conversao, tipos_temperaturas, texto_entrada, texto_saida, texto_valor)
     elif tipo_conversao==2:
-        nova_distancia=menu_conversao(tipo_conversao, unidades_de_medida, unidade_entrada_texto, unidade_saida_texto, unidade_valor_texto)
+        texto_entrada=opcoes_selecao('entrada',unidades_de_medida,tipo_conversao)
+        texto_saida=opcoes_selecao('saida', unidades_de_medida,tipo_conversao)
+        nova_distancia=menu_conversao(tipo_conversao, tipos_temperaturas, texto_entrada, texto_saida, texto_valor)
     elif tipo_conversao==3:
-        novo_peso=menu_conversao(tipo_conversao, unidades_pesos, peso_entrada_texto, peso_saida_texto, peso_valor_texto)
+        texto_entrada=opcoes_selecao('entrada',unidades_pesos,tipo_conversao)
+        texto_saida=opcoes_selecao('saida', unidades_pesos,tipo_conversao)
+        novo_peso=menu_conversao(tipo_conversao, unidades_pesos, texto_entrada, texto_saida, texto_valor)
     elif tipo_conversao==4:
-        novo_peso=menu_conversao(tipo_conversao, unidades_tempo, tempo_entrada_texto, tempo_saida_texto, tempo_valor_texto)         
+        texto_entrada=opcoes_selecao('entrada',unidades_tempo,tipo_conversao)
+        texto_saida=opcoes_selecao('saida', unidades_tempo,tipo_conversao)
+        novo_tempo=menu_conversao(tipo_conversao, unidades_tempo, texto_entrada, texto_saida, texto_valor)
+    # elif tipo_conversao==5:
+    #     texto_entrada=opcoes_selecao('entrada',unidades_velocidade,tipo_conversao)
+    #     texto_saida=opcoes_selecao('saida', unidades_velocidade,tipo_conversao)
+    #     nova_velocidade=menu_conversao(tipo_conversao, unidades_velocidade, texto_entrada, texto_saida, texto_valor)         
     elif tipo_conversao==0:
         break
     else:
