@@ -1,1 +1,1 @@
-TODO
+Um simples conversor de unidades. Basta executar o arquivo *main.py* e seguir o menu.
