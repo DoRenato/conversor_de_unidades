@@ -3,7 +3,7 @@ from temperaturas import converter_temperatura, tipos_temperaturas
 from distancias import converter_unidade, unidades_de_medida
 from pesos import converter_peso, unidades_pesos
 from tempo import converter_tempo, unidades_tempo
-# from velocidade import converter_velocidade, unidades_velocidade
+from velocidade import converter_velocidade, unidades_velocidade
 
 
 
@@ -61,9 +61,9 @@ def menu_conversao(tipo_conversao, menu_dict, entrada_texto, saida_texto, valor_
     if tipo_conversao==4:
         novo_valor=converter_tempo(entrada, saida, valor)
         mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
-    # if tipo_conversao==5:
-    #     novo_valor=round(converter_velocidade(entrada, saida, valor),3)
-    #     mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
+    if tipo_conversao==5:
+        novo_valor=round(converter_velocidade(entrada, saida, valor),3)
+        mostrar_resultado(tipo_conversao, menu_dict, entrada, saida, valor, novo_valor)
 
 
 bem_vindo_texto="""
@@ -86,7 +86,7 @@ while True:
     elif tipo_conversao==2:
         texto_entrada=opcoes_selecao('entrada',unidades_de_medida,tipo_conversao)
         texto_saida=opcoes_selecao('saida', unidades_de_medida,tipo_conversao)
-        nova_distancia=menu_conversao(tipo_conversao, tipos_temperaturas, texto_entrada, texto_saida, texto_valor)
+        nova_distancia=menu_conversao(tipo_conversao, unidades_de_medida, texto_entrada, texto_saida, texto_valor)
     elif tipo_conversao==3:
         texto_entrada=opcoes_selecao('entrada',unidades_pesos,tipo_conversao)
         texto_saida=opcoes_selecao('saida', unidades_pesos,tipo_conversao)
@@ -95,10 +95,10 @@ while True:
         texto_entrada=opcoes_selecao('entrada',unidades_tempo,tipo_conversao)
         texto_saida=opcoes_selecao('saida', unidades_tempo,tipo_conversao)
         novo_tempo=menu_conversao(tipo_conversao, unidades_tempo, texto_entrada, texto_saida, texto_valor)
-    # elif tipo_conversao==5:
-    #     texto_entrada=opcoes_selecao('entrada',unidades_velocidade,tipo_conversao)
-    #     texto_saida=opcoes_selecao('saida', unidades_velocidade,tipo_conversao)
-    #     nova_velocidade=menu_conversao(tipo_conversao, unidades_velocidade, texto_entrada, texto_saida, texto_valor)         
+    elif tipo_conversao==5:
+        texto_entrada=opcoes_selecao('entrada',unidades_velocidade,tipo_conversao)
+        texto_saida=opcoes_selecao('saida', unidades_velocidade,tipo_conversao)
+        nova_velocidade=menu_conversao(tipo_conversao, unidades_velocidade, texto_entrada, texto_saida, texto_valor)         
     elif tipo_conversao==0:
         break
     else:

@@ -35,7 +35,7 @@ def converter_unidade(entrada, saida, valor_inicial):
         m2km=valor/1000
         return m2km
     elif saida==5:
-        m2mi=valor/1609
+        m2mi=valor/1609.34
         return m2mi
     elif saida==6:
         m2in=valor*39.37
